@@ -5,3 +5,10 @@ C:\Users\vsilu\OneDrive\Рабочий стол\LR3_UnitTesting\LR3_UnitTesting\
 C:\Users\vsilu\OneDrive\Рабочий стол\LR3_UnitTesting\LR3_UnitTesting\obj\Debug\LR3_UnitTesting.csproj.CoreCompileInputs.cache
 C:\Users\vsilu\OneDrive\Рабочий стол\LR3_UnitTesting\LR3_UnitTesting\obj\Debug\LR3_UnitTesting.exe
 C:\Users\vsilu\OneDrive\Рабочий стол\LR3_UnitTesting\LR3_UnitTesting\obj\Debug\LR3_UnitTesting.pdb
+C:\folder\TestingCourse\LR3_UnitTesting\LR3_UnitTesting\bin\Debug\LR3_UnitTesting.exe.config
+C:\folder\TestingCourse\LR3_UnitTesting\LR3_UnitTesting\bin\Debug\LR3_UnitTesting.exe
+C:\folder\TestingCourse\LR3_UnitTesting\LR3_UnitTesting\bin\Debug\LR3_UnitTesting.pdb
+C:\folder\TestingCourse\LR3_UnitTesting\LR3_UnitTesting\obj\Debug\LR3_UnitTesting.csprojAssemblyReference.cache
+C:\folder\TestingCourse\LR3_UnitTesting\LR3_UnitTesting\obj\Debug\LR3_UnitTesting.csproj.CoreCompileInputs.cache
+C:\folder\TestingCourse\LR3_UnitTesting\LR3_UnitTesting\obj\Debug\LR3_UnitTesting.exe
+C:\folder\TestingCourse\LR3_UnitTesting\LR3_UnitTesting\obj\Debug\LR3_UnitTesting.pdb
