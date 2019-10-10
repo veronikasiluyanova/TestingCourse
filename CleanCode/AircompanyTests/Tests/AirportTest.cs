@@ -29,7 +29,7 @@ namespace AircompanyTests.Tests
 
         private PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
 
-        Airport airport = new Airport(planes);
+        public Airport airport = new Airport(planes);
 
         public bool HasMilitaryTransportPlane()
         {
@@ -50,7 +50,7 @@ namespace AircompanyTests.Tests
 
             for (int i = 0; i < airport.GetPlanes().ToList().Count - 1; i++)
             {
-                if (airport.GetPlanes().ToList()[i].MAXLoadCapacity() > airport.GetPlanes().ToList()[i + 1].MAXLoadCapacity())
+                if (airport.GetPlanes().ToList()[i].MaxLoadCapacity() > airport.GetPlanes().ToList()[i + 1].MaxLoadCapacity())
                 {
                     return false;
                 }

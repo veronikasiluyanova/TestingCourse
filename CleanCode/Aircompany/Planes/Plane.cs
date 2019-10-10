@@ -4,10 +4,10 @@ namespace Aircompany.Planes
 {
     public abstract class Plane
     {
-        public string _model;
-        public int _maxSpeed;
-        public int _maxFlightDistance;
-        public int _maxLoadCapacity;
+        private string _model;
+        private int _maxSpeed;
+        private int _maxFlightDistance;
+        private int _maxLoadCapacity;
 
         public Plane(string model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity)
         {
@@ -22,17 +22,17 @@ namespace Aircompany.Planes
             return _model;
         }
 
-        public int GetMS()
+        public int GetMaxSpeed()
         {
             return _maxSpeed;
         }
 
-        public int MAXFlightDistance()
+        public int MaxFlightDistance()
         {
             return _maxFlightDistance;
         }
 
-        public int MAXLoadCapacity()
+        public int MaxLoadCapacity()
         {
             return _maxLoadCapacity;
         }
@@ -49,7 +49,7 @@ namespace Aircompany.Planes
 
         public override bool Equals(object obj)
         {
-            var plane = obj as Plane;
+            Plane plane = obj as Plane;
             return plane != null &&
                    _model == plane._model &&
                    _maxSpeed == plane._maxSpeed &&
@@ -59,7 +59,7 @@ namespace Aircompany.Planes
 
         public override int GetHashCode()
         {
-            var hashCode = -1043886837;
+            int hashCode = -1043886837;
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(_model);
             hashCode = hashCode * -1521134295 + _maxSpeed.GetHashCode();
             hashCode = hashCode * -1521134295 + _maxFlightDistance.GetHashCode();
