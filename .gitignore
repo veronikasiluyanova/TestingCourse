@@ -71,6 +71,11 @@ artifacts/
 *.svclog
 *.scc
 
+*.exe
+
+TestResults/
+
+[Pp]ackage/
 # NuGet Packages
 *.nupkg
 # NuGet Symbol Packages
