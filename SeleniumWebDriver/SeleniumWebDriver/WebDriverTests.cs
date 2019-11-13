@@ -1,10 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Opera;
-using System.Threading;
+
 
 namespace SeleniumWebDriver
 {
@@ -24,13 +22,15 @@ namespace SeleniumWebDriver
             departurePlaceField.Click();
             departurePlaceField.Clear();
             departurePlaceField.SendKeys("Chicago");
-            var leaveDatePicker = driver.FindElement(By.XPath("//*[@id='search-leavedate']"));
+
+            var leaveDatePicker = driver.FindElement(By.XPath("//*[@id='search-leavedate']/div/span"));
             leaveDatePicker.Click();
             var leaveDate = driver.FindElement(By.XPath("//*[@id='calendarpanel-0']/div[2]/table/tbody/tr[4]/td[3]/div"));
             leaveDate.Click();
-            var returnDate = driver.FindElement(By.XPath("//*[@id='calendarpanel-0']/div[2]/table/tbody/tr[4]/td[6]/div"));
+            var returnDate = driver.FindElement(By.XPath("//*[@id='calendarpanel-0']/div[2]/table/tbody/tr[4]/td[7]/div"));
             returnDate.Click();
-            var searchButton = driver.FindElement(By.XPath("//*[@id='farefinder-flight-search-container']/div[4]/div[2]/div/button"));
+
+            var searchButton = driver.FindElement(By.XPath("//*[@type='submit']"));
             searchButton.Click();
 
             string errorMessage = driver.FindElement(By.XPath("//*[@id='toSelectedOption-error']")).GetAttribute("textContent");
@@ -55,12 +55,12 @@ namespace SeleniumWebDriver
 
             var leaveDatePicker = driver.FindElement(By.XPath("//*[@id='search-leavedate']/div/span"));
             leaveDatePicker.Click();
-            var leaveDate = driver.FindElement(By.XPath("//*[@id='calendarpanel-0']/div[2]/table/tbody/tr[4]/td[3]/div"));
+            var leaveDate = driver.FindElement(By.XPath("//*[@id='calendarpanel-0']/div[2]/table/tbody/tr[4]/td[1]/div"));
             leaveDate.Click();
-            var returnDate = driver.FindElement(By.XPath("//*[@id='calendarpanel-0']/div[2]/table/tbody/tr[4]/td[6]/div"));
+            var returnDate = driver.FindElement(By.XPath("//*[@id='calendarpanel-0']/div[2]/table/tbody/tr[4]/td[7]/div"));
             returnDate.Click();
 
-            var searchButton = driver.FindElement(By.XPath("//*[@id='farefinder-flight-search-container']/div[4]/div[2]/div/button"));
+            var searchButton = driver.FindElement(By.XPath("//*[@type='submit']"));
             searchButton.Click();
 
             string errorMessage = driver.FindElement(By.XPath("//*[@id='toSelectedOption-error']")).GetAttribute("textContent");
