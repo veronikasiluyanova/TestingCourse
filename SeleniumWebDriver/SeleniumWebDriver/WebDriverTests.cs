@@ -23,6 +23,9 @@ namespace SeleniumWebDriver
             departurePlaceField.Clear();
             departurePlaceField.SendKeys("Chicago");
 
+            var arrivalPlaceField = driver.FindElement(By.XPath("//*[@id='depart-to']"));
+            arrivalPlaceField.Click();
+
             var oneWayOptionButton = driver.FindElement(By.XPath("//*[@id='field-search-journey-type-oneway']"));
             oneWayOptionButton.Click();
 
