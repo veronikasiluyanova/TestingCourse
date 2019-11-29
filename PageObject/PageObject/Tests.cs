@@ -1,36 +1,55 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace PageObject
 {
-    [TestClass]
+    [TestFixture]
     [Obsolete]
     public class Tests
     {
-        IWebDriver driver = new ChromeDriver();
-        private const string NoPersonalDetailsError = "Please review and complete.";
+        private IWebDriver driver;
+        private const string url = "https://www.airasia.com/en/gb";
+        private const string UnableToLocateBookingError = "We're unable to locate your flight booking. You can only search for bookings made with AirAsia or other online travel websites.";
 
-        [TestMethod]
-        public void NoPersonalDetailsTest()
+        private MainPageData mainPageData = new MainPageData("Srinagar", "Goa", "10/12/2019", "20/12/2019");
+
+        private int adultPassengerNumber = 9;
+
+        [SetUp]
+        public void OpenBrowser()
         {
-            driver.Navigate().GoToUrl("https://www.airnewzealand.com/");
-            MainPage mainPage = new MainPage(driver).InputRouteDataAndSearch("Chicago", "Sydney", "11/21");
-            FlightBookingPage flightBookingPage = new FlightBookingPage(driver).SelectFlight();
-            PassengerDetailsPage passengerDetailsPage = new PassengerDetailsPage(driver).EnterPassengerDetails();
-            Assert.AreEqual(NoPersonalDetailsError, passengerDetailsPage.NoPassengerDetailsError.Text);
-            driver.Quit();
+            driver = new ChromeDriver();
+            driver.Navigate().GoToUrl(url);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(900);
         }
 
-        [TestMethod]
-        public void SelectedNoFlightTest()
+        [Test]
+        public void NoBookingInformationTest()
         {
-            driver.Navigate().GoToUrl("https://www.airnewzealand.com/");
-            MainPage mainPage = new MainPage(driver).InputRouteDataAndSearch("Chicago", "Sydney", "11/21");
-            FlightBookingPage flightBookingPage = new FlightBookingPage(driver);
-            Assert.IsTrue(flightBookingPage.ContinueButton.GetAttribute("aria-disabled") != null);
+            MainPage mainPage = new MainPage(driver);
+            mainPage.bagsMealsSeatsButton.Click();
+            SearchBookingPage searchBookingPage = new SearchBookingPage();
+            searchBookingPage.searchButton.Click();
+            Assert.AreEqual(UnableToLocateBookingError, searchBookingPage.unableToLocateBookingError.Text);
+        }
+        
+        [Test]
+        public void TooManyPassengersTest()
+        {
+            MainPage mainPage = new MainPage(driver);
+            mainPage.InputRouteData(mainPageData);
+            mainPage.passengerNumberListButton.Click();
+            mainPage.AddAdultPassenger(adultPassengerNumber);
+            Assert.IsFalse(mainPage.passengerNumberListButton.Enabled);
+        }
+
+        [TearDown]
+        public void CloseBrowser()
+        {
             driver.Quit();
+            driver.Dispose();
         }
     }
 }

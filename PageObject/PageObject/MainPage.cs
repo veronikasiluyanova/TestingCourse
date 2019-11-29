@@ -1,47 +1,65 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace PageObject
 {
     [Obsolete]
-    class MainPage
+    public class MainPage
     {
         IWebDriver driver;
 
-        [FindsBy(How=How.XPath, Using= "//INPUT[@id='depart-from']")]
-        IWebElement DeparturePlaceField { get; set; }
+        [FindsBy(How = How.Id, Using = "home-origin-autocomplete-heatmap")]
+        private IWebElement departurePlaceField;
 
-        [FindsBy(How = How.XPath, Using = "//INPUT[@id='depart-to']")]
-        IWebElement ArrivalPlaceField { get; set; }
-
-        [FindsBy(How = How.XPath, Using = "//*[@id='field-search-journey-type-oneway']")]
-        IWebElement OneWayOptionButton { get; set; }
+        [FindsBy(How = How.Id, Using = "home-destination-autocomplete-heatmap")]
+        private IWebElement arrivalPlaceField;
         
-        [FindsBy(How = How.XPath, Using = "//*[@id='leaveDate']")]
-        IWebElement LeaveDateField { get; set; }
+        [FindsBy(How = How.Id, Using = "home-depart-date-heatmap")]
+        private IWebElement leaveDateField;
 
-        [FindsBy(How = How.XPath, Using = "//*[@type='submit']")]
-        IWebElement SearchButton { get; set; }
+        [FindsBy(How = How.Id, Using = "home-return-date-heatmap")]
+        private IWebElement returnDateField;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='home-airasia-numeric-selector-div-toggle-dropdown-heatmap']")]
+        public IWebElement passengerNumberListButton;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='home-airasia-numeric-selector-a-home-enabled-increase-main.adult-heatmap']")]
+        public IWebElement addAdultPassengerButton;
+
+        [FindsBy(How = How.Id, Using = "home-flight-search-airasia-button-inner-button-select-flight-heatmap")]
+        public IWebElement searchButton;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='product-tile-bags_meals_seats']")]
+        public IWebElement bagsMealsSeatsButton;
 
         public MainPage(IWebDriver driver)
         {
             PageFactory.InitElements(driver, this);
         }
 
-        public MainPage InputRouteDataAndSearch(string departurePlace, string arrivalPlace, string leaveDate)
+        public MainPage InputRouteData(MainPageData mainPageData)
         {
-            DeparturePlaceField.Click();
-            DeparturePlaceField.Clear();
-            DeparturePlaceField.SendKeys(departurePlace);
-            ArrivalPlaceField.Click();
-            ArrivalPlaceField.SendKeys(arrivalPlace);
-            OneWayOptionButton.Click();
-            LeaveDateField.Click();
-            LeaveDateField.SendKeys(leaveDate);
-            SearchButton.Click();
+            departurePlaceField.Click();
+            departurePlaceField.Clear();
+            departurePlaceField.SendKeys(mainPageData.DeparturePlace);
+            arrivalPlaceField.Click();
+            arrivalPlaceField.SendKeys(mainPageData.ArrivalPlace);
+            leaveDateField.Click();
+            leaveDateField.Clear();
+            leaveDateField.SendKeys(mainPageData.LeaveDate);
+            returnDateField.Click();
+            returnDateField.Clear();
+            returnDateField.SendKeys(mainPageData.ReturnDate);
             return this;
+        }
+
+        public void AddAdultPassenger(int countOfPassenger)
+        {
+            for (int i = 0; i < countOfPassenger-1; i++) 
+            {
+                addAdultPassengerButton.Click();
+            }
         }
     }
 }
