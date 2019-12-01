@@ -22,7 +22,7 @@ namespace PageObject
         {
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl(url);
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(900);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
         }
 
         [Test]
@@ -30,8 +30,8 @@ namespace PageObject
         {
             MainPage mainPage = new MainPage(driver);
             mainPage.bagsMealsSeatsButton.Click();
-            SearchBookingPage searchBookingPage = new SearchBookingPage();
-            searchBookingPage.searchButton.Click();
+            SearchBookingPage searchBookingPage = new SearchBookingPage(driver);
+            searchBookingPage.ClickSearchButton();
             Assert.AreEqual(UnableToLocateBookingError, searchBookingPage.unableToLocateBookingError.Text);
         }
         
@@ -49,7 +49,6 @@ namespace PageObject
         public void CloseBrowser()
         {
             driver.Quit();
-            driver.Dispose();
         }
     }
 }

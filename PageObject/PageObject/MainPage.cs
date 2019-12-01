@@ -21,16 +21,16 @@ namespace PageObject
         [FindsBy(How = How.Id, Using = "home-return-date-heatmap")]
         private IWebElement returnDateField;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='home-airasia-numeric-selector-div-toggle-dropdown-heatmap']")]
+        [FindsBy(How = How.Id, Using = "home-airasia-numeric-selector-div-toggle-dropdown-heatmap")]
         public IWebElement passengerNumberListButton;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='home-airasia-numeric-selector-a-home-enabled-increase-main.adult-heatmap']")]
+        [FindsBy(How = How.Id, Using = "home-airasia-numeric-selector-a-home-enabled-increase-main.adult-heatmap")]
         public IWebElement addAdultPassengerButton;
 
         [FindsBy(How = How.Id, Using = "home-flight-search-airasia-button-inner-button-select-flight-heatmap")]
         public IWebElement searchButton;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='product-tile-bags_meals_seats']")]
+        [FindsBy(How = How.Id, Using = "product-tile-bags_meals_seats")]
         public IWebElement bagsMealsSeatsButton;
 
         public MainPage(IWebDriver driver)
@@ -40,15 +40,11 @@ namespace PageObject
 
         public MainPage InputRouteData(MainPageData mainPageData)
         {
-            departurePlaceField.Click();
             departurePlaceField.Clear();
             departurePlaceField.SendKeys(mainPageData.DeparturePlace);
-            arrivalPlaceField.Click();
             arrivalPlaceField.SendKeys(mainPageData.ArrivalPlace);
-            leaveDateField.Click();
             leaveDateField.Clear();
             leaveDateField.SendKeys(mainPageData.LeaveDate);
-            returnDateField.Click();
             returnDateField.Clear();
             returnDateField.SendKeys(mainPageData.ReturnDate);
             return this;
