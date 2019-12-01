@@ -2,19 +2,21 @@
 using System;
 using OpenQA.Selenium.Chrome;
 using System.Diagnostics;
+using NUnit.Framework;
 
-namespace GitHubAutomation.Driver
+namespace AirAsiaAutomation.Driver
 {
-    public class DriverInstance
+    public class DriverSingleton
     {
         private static IWebDriver driver;
 
-        private DriverInstance() { }
+        private DriverSingleton() { }
 
-        public static IWebDriver GetInstance()
+        public static IWebDriver GetDriver()
         {
             if (driver == null)
             {
+
                 driver = new ChromeDriver();
                 driver.Manage().Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(30));
                 driver.Manage().Window.Maximize();

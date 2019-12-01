@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace GitHubAutomation.Pages
+namespace AirAsiaAutomation.Pages
 {
-    public class CreateNewRepositoryPage
+    public class SearchHotelPage
     {
         private const string BASE_URL = "http://www.github.com/new";
         private IWebDriver driver;
@@ -24,7 +24,7 @@ namespace GitHubAutomation.Pages
         private IWebElement linkCurrentRepository;
 
 
-        public CreateNewRepositoryPage(IWebDriver driver)
+        public SearchHotelPage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(this.driver, this);

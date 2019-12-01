@@ -1,41 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium;
+using System;
 
-namespace GitHubAutomation.Pages
+namespace PageObject
 {
+    [Obsolete]
     public class MainPage
     {
-        private const string BASE_URL = "http://www.github.com/";
+        IWebDriver driver;
 
-        [FindsBy(How = How.XPath, Using = "//summary[@aria-label='Create new…']")]
-        private IWebElement buttonCreateNew;
+        [FindsBy(How = How.Id, Using = "home-origin-autocomplete-heatmap")]
+        private IWebElement departurePlaceField;
 
-        [FindsBy(How = How.XPath, Using = "//a[contains(text(), 'New repository')]")]
-        private IWebElement linkNewRepository;
+        [FindsBy(How = How.Id, Using = "home-destination-autocomplete-heatmap")]
+        private IWebElement arrivalPlaceField;
+        
+        [FindsBy(How = How.Id, Using = "home-depart-date-heatmap")]
+        private IWebElement leaveDateField;
 
-        private IWebDriver driver;
+        [FindsBy(How = How.Id, Using = "home-return-date-heatmap")]
+        private IWebElement returnDateField;
+
+        [FindsBy(How = How.Id, Using = "home-airasia-numeric-selector-div-toggle-dropdown-heatmap")]
+        public IWebElement passengerNumberListButton;
+
+        [FindsBy(How = How.Id, Using = "home-airasia-numeric-selector-a-home-enabled-increase-main.adult-heatmap")]
+        public IWebElement addAdultPassengerButton;
+
+        [FindsBy(How = How.Id, Using = "home-flight-search-airasia-button-inner-button-select-flight-heatmap")]
+        public IWebElement searchButton;
+
+        [FindsBy(How = How.Id, Using = "product-tile-bags_meals_seats")]
+        public IWebElement bagsMealsSeatsButton;
 
         public MainPage(IWebDriver driver)
         {
-            this.driver = driver;
-            PageFactory.InitElements(this.driver, this);
+            PageFactory.InitElements(driver, this);
         }
 
-        public void OpenPage()
+        public MainPage InputRouteData(MainPageData mainPageData)
         {
-            driver.Navigate().GoToUrl(BASE_URL);
+            departurePlaceField.Clear();
+            departurePlaceField.SendKeys(mainPageData.DeparturePlace);
+            arrivalPlaceField.SendKeys(mainPageData.ArrivalPlace);
+            leaveDateField.Clear();
+            leaveDateField.SendKeys(mainPageData.LeaveDate);
+            returnDateField.Clear();
+            returnDateField.SendKeys(mainPageData.ReturnDate);
+            return this;
         }
 
-        public void ClickOnCreateNewRepositoryButton()
+        public void AddAdultPassenger(int countOfPassenger)
         {
-            buttonCreateNew.Click();
-            linkNewRepository.Click();
+            for (int i = 0; i < countOfPassenger-1; i++) 
+            {
+                addAdultPassengerButton.Click();
+            }
         }
-
     }
 }
