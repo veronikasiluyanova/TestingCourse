@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PageObject
+﻿
+namespace AirAsiaAutomation.Models
 {
     public class MainPageData
     {
@@ -16,9 +11,9 @@ namespace PageObject
             ReturnDate = returnDate;
         }
 
-        public string DeparturePlace { get; }
-        public string ArrivalPlace { get; }
-        public string LeaveDate { get; }
-        public string ReturnDate { get; }
+        public string DeparturePlace { get; set; }
+        public string ArrivalPlace { get; set; }
+        public string LeaveDate { get; set; }
+        public string ReturnDate { get; set; }
     }
 }

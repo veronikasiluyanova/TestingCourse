@@ -1,8 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using AirAsiaAutomation.Models;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace PageObject
+namespace AirAsiaAutomation.Pages
 {
     [Obsolete]
     public class MainPage
@@ -30,8 +32,8 @@ namespace PageObject
         [FindsBy(How = How.Id, Using = "home-flight-search-airasia-button-inner-button-select-flight-heatmap")]
         public IWebElement searchButton;
 
-        [FindsBy(How = How.Id, Using = "product-tile-bags_meals_seats")]
-        public IWebElement bagsMealsSeatsButton;
+        [FindsBy(How = How.Id, Using = "product-tile-hotels")]
+        public IWebElement hotelSelectionButton;
 
         public MainPage(IWebDriver driver)
         {
@@ -56,6 +58,20 @@ namespace PageObject
             {
                 addAdultPassengerButton.Click();
             }
+        }
+
+        public FlightSelectPage ClickSearchButton()
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("home-flight-search-airasia-button-inner-button-select-flight-heatmap")));
+            searchButton.Click();
+            return new FlightSelectPage(driver);
+        }
+
+        public HotelSearchPage ClickHotelSelectionButton()
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("product-tile-hotels")));
+            hotelSelectionButton.Click();
+            return new HotelSearchPage(driver);
         }
     }
 }

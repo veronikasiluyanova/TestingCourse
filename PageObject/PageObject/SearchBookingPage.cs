@@ -28,12 +28,6 @@ namespace PageObject
             this.driver = driver;
             new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("ControlGroupRetrieveBookingExpediaAKView_BookingRetrieveInputExpediaAKView_CONFIRMATIONNUMBER1")));
         }
-
-        public SearchBookingPage ClickSearchButton()
-        {
-            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("ControlGroupRetrieveBookingExpediaAKView_BookingRetrieveInputExpediaAKView_ButtonRetrieve")));
-            searchButton.Click();
-            return this;
-        }
+        
     }
 }

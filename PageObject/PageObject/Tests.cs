@@ -31,7 +31,7 @@ namespace PageObject
             MainPage mainPage = new MainPage(driver);
             mainPage.bagsMealsSeatsButton.Click();
             SearchBookingPage searchBookingPage = new SearchBookingPage(driver);
-            searchBookingPage.ClickSearchButton();
+            searchBookingPage.searchButton.Click();
             Assert.AreEqual(UnableToLocateBookingError, searchBookingPage.unableToLocateBookingError.Text);
         }
         
