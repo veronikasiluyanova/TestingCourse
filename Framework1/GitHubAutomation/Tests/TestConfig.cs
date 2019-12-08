@@ -1,5 +1,6 @@
 ﻿using AirAsiaAutomation.Driver;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using System;
@@ -12,31 +13,23 @@ namespace AirAsiaAutomation.Tests
         protected IWebDriver Driver { get; set; }
 
         [SetUp]
-        public void OpenDriver()
+        public void TestStart()
         {
             Driver = DriverSingleton.GetDriver();
         }
 
-        protected void MakeScreenshotWhenFail(Action action)
+        [TearDown]
+        public void TestFinish()
         {
-            try
+            if (TestContext.CurrentContext.Result.Outcome == ResultState.Failure)
             {
-                action();
-            }
-            catch
-            {
-                string screenFolder = AppDomain.CurrentDomain.BaseDirectory + @"\screens";
+                string screenFolder = AppDomain.CurrentDomain.BaseDirectory + @"\Screenshots";
                 Directory.CreateDirectory(screenFolder);
                 var screen = Driver.TakeScreenshot();
                 screen.SaveAsFile(screenFolder + @"\Screenshot" + DateTime.Now.ToString("yy-MM-dd_hh-mm-ss") + ".png",
                     ScreenshotImageFormat.Png);
-                throw;
             }
-        }
 
-        [TearDown]
-        public void ClearDriver()
-        {
             DriverSingleton.CloseDriver();
         }
     }

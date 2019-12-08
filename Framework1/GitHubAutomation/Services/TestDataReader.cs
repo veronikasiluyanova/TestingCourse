@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using System.Configuration;
 
 namespace AirAsiaAutomation.Services
@@ -10,8 +9,7 @@ namespace AirAsiaAutomation.Services
         {
             get
             {
-                var variableFromConsole = TestContext.Parameters.Get("env");
-                string file = string.IsNullOrEmpty(variableFromConsole) ? "qa" : variableFromConsole;
+                string file = "testInfo";
                 int index = AppDomain.CurrentDomain.BaseDirectory.IndexOf("bin", StringComparison.Ordinal);
                 var configeMap = new ExeConfigurationFileMap
                 {

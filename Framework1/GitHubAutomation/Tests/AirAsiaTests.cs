@@ -2,7 +2,6 @@
 using AirAsiaAutomation.Services;
 using NUnit.Framework;
 
-
 namespace AirAsiaAutomation.Tests
 {
     public class AirAsiaTests : TestConfig
@@ -13,32 +12,25 @@ namespace AirAsiaAutomation.Tests
         [Test]
         public void HotelCheckInDateLaterThanCheckOutDateTest()
         {
-            MakeScreenshotWhenFail(() =>
-            {
-                Driver.Navigate().GoToUrl("https://www.airasia.com/en/gb");
-                HotelSearchPage mainPage = new MainPage(Driver)
-                         .ClickHotelSelectionButton()
-                         .InputBookingData(SearchHotelPageDataCreator.SetAllProperties())
-                         .ClickHotelSearchButton();
-                Assert.AreEqual(IncorrectDateError, mainPage.incorrectDateError.Text);
-            });
+            Driver.Navigate().GoToUrl("https://www.airasia.com/en/gb");
+            HotelSearchPage mainPage = new MainPage(Driver)
+                     .ClickHotelSelectionButton()
+                     .InputBookingData(SearchHotelPageDataCreator.SetAllProperties())
+                     .ClickHotelSearchButton();
+            Assert.AreEqual(IncorrectDateError, mainPage.incorrectDateError.Text);
         }
+
 
         [Test]
         public void FlightBookingTest()
         {
-            MakeScreenshotWhenFail(() =>
-            {
-                Driver.Navigate().GoToUrl("https://www.airasia.com/en/gb");
-                GuestDetailsPage mainPage = new MainPage(Driver)
-                         .InputRouteData(MainPageDataCreator.SetAllProperties())
-                         .ClickSearchButton()
-                         .ClickContinueButton()
-                         .ClickContinueButton();
-
-
-                Assert.AreEqual(ExpectedHeaderText, mainPage.header.Text);
-            });
+            Driver.Navigate().GoToUrl("https://www.airasia.com/en/gb");
+            GuestDetailsPage mainPage = new MainPage(Driver)
+                     .InputRouteData(MainPageDataCreator.SetAllProperties())
+                     .ClickSearchButton()
+                     .ClickContinueButton()
+                     .ClickContinueButton();
+            Assert.AreEqual(ExpectedHeaderText, mainPage.header.Text);
         }
     }
 }

@@ -81,7 +81,7 @@
     <Folder Include="DriverBinaries\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Configs\dev.config" />
+    <None Include="Configs\testInfo.config" />
     <None Include="Configs\qa.config" />
     <None Include="packages.config" />
   </ItemGroup>
