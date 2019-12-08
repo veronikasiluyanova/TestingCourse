@@ -5,7 +5,6 @@ using System;
 
 namespace PageObject
 {
-    [Obsolete]
     public class SearchBookingPage
     {
         IWebDriver driver;

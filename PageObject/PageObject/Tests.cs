@@ -6,7 +6,6 @@ using OpenQA.Selenium.Chrome;
 namespace PageObject
 {
     [TestFixture]
-    [Obsolete]
     public class Tests
     {
         private IWebDriver driver;

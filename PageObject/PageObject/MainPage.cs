@@ -1,10 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
-using System;
 
 namespace PageObject
 {
-    [Obsolete]
     public class MainPage
     {
         IWebDriver driver;

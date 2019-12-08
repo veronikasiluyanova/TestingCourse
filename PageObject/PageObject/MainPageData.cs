@@ -3,10 +3,10 @@ namespace PageObject
 {
     public class MainPageData
     {
-        private string DeparturePlace { get; }
-        private string ArrivalPlace { get; }
-        private string LeaveDate { get; }
-        private string ReturnDate { get; }
+        public string DeparturePlace { get; }
+        public string ArrivalPlace { get; }
+        public string LeaveDate { get; }
+        public string ReturnDate { get; }
 
         public MainPageData (string departurePlace, string arrivalPlace, string leaveDate, string returnDate)
         {
