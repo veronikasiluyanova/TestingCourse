@@ -55,5 +55,10 @@ namespace PageObject
                 addAdultPassengerButton.Click();
             }
         }
+
+        public bool AddPassengerButtonIsEnabled()
+        {
+            return addAdultPassengerButton.GetAttribute("disabled") == null;
+        }
     }
 }

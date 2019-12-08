@@ -41,7 +41,7 @@ namespace PageObject
             mainPage.InputRouteData(mainPageData);
             mainPage.passengerNumberListButton.Click();
             mainPage.AddAdultPassenger(adultPassengerNumber);
-            Assert.IsFalse(mainPage.passengerNumberListButton.Enabled);
+            Assert.IsFalse(mainPage.AddPassengerButtonIsEnabled());
         }
 
         [TearDown]
