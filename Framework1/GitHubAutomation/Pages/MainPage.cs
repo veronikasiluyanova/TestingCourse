@@ -6,7 +6,6 @@ using System;
 
 namespace AirAsiaAutomation.Pages
 {
-    [Obsolete]
     public class MainPage
     {
         IWebDriver driver;

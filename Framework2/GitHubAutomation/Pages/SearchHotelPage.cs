@@ -6,7 +6,7 @@ using System;
 
 namespace AirAsiaAutomation.Pages
 {
-    public class HotelSearchPage
+    public class SearchHotelPage
     {
         IWebDriver driver;
     
@@ -29,23 +29,24 @@ namespace AirAsiaAutomation.Pages
         public IWebElement incorrectDateError;
         
 
-        public HotelSearchPage(IWebDriver driver)
+        public SearchHotelPage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(this.driver, this);
         }
 
-        public HotelSearchPage InputBookingData(SearchHotelPageData searchHotelPageData)
+        public SearchHotelPage InputBookingData(string destination, string checkInDate, string checkOutDate)
         {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.XPath("//a[@data-lob='hotelOnly']")));
             hotelOnlyButton.Click();
             destinationField.Clear();
-            destinationField.SendKeys(searchHotelPageData.Destination);
-            checkInDateField.SendKeys(searchHotelPageData.CheckInDate);
-            checkOutDateField.SendKeys(searchHotelPageData.CheckOutDate);
+            destinationField.SendKeys(destination);
+            checkInDateField.SendKeys(checkInDate);
+            checkOutDateField.SendKeys(checkOutDate);
             return this;
         }
 
-        public HotelSearchPage ClickHotelSearchButton()
+        public SearchHotelPage ClickHotelSearchButton()
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("H-searchButtonExt1")));
             hotelSearchButton.Click();

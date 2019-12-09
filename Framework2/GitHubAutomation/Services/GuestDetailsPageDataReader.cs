@@ -3,13 +3,13 @@ using System.Configuration;
 
 namespace AirAsiaAutomation.Services
 {
-    public class TestDataReader
+    public static class GuestDetailsPageDataReader
     {
         static Configuration ConfigFile
         {
             get
             {
-                string file = "testInfo";
+                string file = "guestDetailPageInfo";
                 int index = AppDomain.CurrentDomain.BaseDirectory.IndexOf("bin", StringComparison.Ordinal);
                 var configeMap = new ExeConfigurationFileMap
                 {

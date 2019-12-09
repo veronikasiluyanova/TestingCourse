@@ -66,21 +66,24 @@
     <Compile Include="Models\SearchHotelPageData.cs" />
     <Compile Include="Pages\AddOnsPage.cs" />
     <Compile Include="Pages\FlightSelectPage.cs" />
+    <Compile Include="Pages\FlightStatusPage.cs" />
     <Compile Include="Pages\GuestDetailsPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
-    <Compile Include="Pages\HotelSearchPage.cs" />
-    <Compile Include="Services\GuestDetailsPageDataCreator.cs" />
-    <Compile Include="Services\MainPageDataCreator.cs" />
-    <Compile Include="Services\SearchHotelPageDataCreator.cs" />
-    <Compile Include="Services\TestDataReader.cs" />
+    <Compile Include="Pages\SearchHotelPage.cs" />
+    <Compile Include="Pages\SearchBookingPage.cs" />
+    <Compile Include="Services\GuestDetailsPageDataReader.cs" />
+    <Compile Include="Services\MainPageDataReader.cs" />
+    <Compile Include="Services\SearchHotelPageDataReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\AirAsiaTests.cs" />
     <Compile Include="Tests\TestConfig.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Configs\testInfo.config" />
+    <None Include="Configs\searchHotelPageInfo.config" />
     <None Include="Configs\qa.config" />
+    <None Include="Configs\mainPageInfo.config" />
+    <None Include="Configs\guestDetailPageInfo.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

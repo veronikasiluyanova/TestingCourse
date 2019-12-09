@@ -14,8 +14,6 @@ namespace AirAsiaAutomation.Models
             ArrivalPlace = arrivalPlace;
             LeaveDate = leaveDate;
             ReturnDate = returnDate;
-        }
-
-        
+        }        
     }
 }
